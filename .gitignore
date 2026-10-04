@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+deploy/html/index.html
+*.swp
+*.swo
+*~
+*.log
+backups/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
