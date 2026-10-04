@@ -1,0 +1,17 @@
+name: Project checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Test scripts and template rendering
+        run: bash tests/check.sh
+      - name: Validate Compose configuration
+        run: |
+          bash scripts/init_env.sh
+          docker compose --project-directory deploy -f deploy/compose.yaml config --quiet
